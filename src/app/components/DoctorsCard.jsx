@@ -1,6 +1,9 @@
-import { Chip, Card, Link } from "@heroui/react";
+import { Chip, Card } from "@heroui/react";
 import Image from "next/image";
 import { CircleDollar } from "@gravity-ui/icons";
+import { details } from "framer-motion/client";
+import Link from "next/link";
+
 
 const DoctorsCard = ({ doctor }) => {
     return (
@@ -57,12 +60,12 @@ const DoctorsCard = ({ doctor }) => {
 
                 <Card.Footer>
                     <Link
-                        href={`/doctor-details`}
+                        href={`/doctor-details/${doctor._id}`}
                         rel="noopener noreferrer"
-                        target="_blank"
+
                     >
                         View Details
-                        <Link.Icon aria-hidden="true" />
+
                     </Link>
                 </Card.Footer>
             </Card>

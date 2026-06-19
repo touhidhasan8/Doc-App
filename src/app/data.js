@@ -19,3 +19,9 @@ export const allDoctors = async () => {
     return doctors;
 }
 
+export const doctorDetails = async (id) => {
+    const res = await fetch(`http://localhost:5000/all-doctors/${id}`)
+    const doctor = await res.json()
+    return doctor;
+}
+
