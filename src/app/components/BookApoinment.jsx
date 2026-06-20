@@ -3,8 +3,10 @@
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { authClient } from "../lib/auth-client";
+import { doctorBooking } from "../data";
+import toast from "react-hot-toast";
 
-const BookApoinment = ({ doctorData }) => {
+const BookAppointment = ({ doctorData }) => {
 
     const { name, fee, image, specialty, _id, id } = doctorData;
     const doctorId = _id || id;
@@ -34,13 +36,21 @@ const BookApoinment = ({ doctorData }) => {
             appointmentDateTime,
             time: booking.time,
         };
-      console.log("Booking Data:", bookData);
+        console.log("Booking Data:", bookData);
+        const bookingDoctorData = await doctorBooking(bookData)
+        if (bookingDoctorData) {
+            toast.success("Booking Success")
+        }
+        else{
+            toast.error("Booking Failed")
+        }
+
 
     };
     return (
         <Modal>
             <Modal.Trigger>
-                <Button variant="primary">Book Apoinment</Button>
+                <Button variant="primary">Book Appointment</Button>
             </Modal.Trigger>
 
             <Modal.Backdrop>
@@ -81,7 +91,7 @@ const BookApoinment = ({ doctorData }) => {
                                     </TextField>
 
                                     <Modal.Footer>
-                                        <Button type="submit">  Book Appointment </Button>
+                                        <Button slot={"close"} type="submit">  Book Appointment </Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>
@@ -93,4 +103,4 @@ const BookApoinment = ({ doctorData }) => {
     );
 };
 
-export default BookApoinment;
+export default BookAppointment;

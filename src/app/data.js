@@ -25,3 +25,14 @@ export const doctorDetails = async (id) => {
     return doctor;
 }
 
+
+export const doctorBooking = async (bookData) => {
+    const res = await fetch('http://localhost:5000/appointments', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookData)
+    });
+    return res.json();
+};

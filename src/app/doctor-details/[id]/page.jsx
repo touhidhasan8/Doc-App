@@ -3,7 +3,10 @@ import Image from "next/image";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdWorkOutline } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
-import BookApoinment from "@/app/components/BookApoinment";
+import BookAppointment from "@/app/components/BookApoinment";
+import Link from "next/link";
+import { ArrowLeftFromLine } from "@gravity-ui/icons";
+import { Button } from "@heroui/react";
 
 const DoctorDetails = async ({ params }) => {
     const { id } = await params;
@@ -11,6 +14,12 @@ const DoctorDetails = async ({ params }) => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
+            <Button>
+                <div className="flex items-center gap-2">
+                    <h1 ><ArrowLeftFromLine /></h1>
+                    <Link href='/doctors'>  Go Back </Link>
+                </div>
+            </Button>
             {/* Header */}
             <div className="text-center mb-10">
                 <h1 className="text-3xl md:text-4xl font-bold">
@@ -98,7 +107,7 @@ const DoctorDetails = async ({ params }) => {
                                         <p>Per consultation</p>
                                     </div>
 
-                                    <BookApoinment doctorData={doctorData} />
+                                    <BookAppointment doctorData={doctorData} />
                                 </div>
 
                             </div>
