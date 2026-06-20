@@ -1,7 +1,6 @@
 import { Chip, Card } from "@heroui/react";
 import Image from "next/image";
-import { CircleDollar } from "@gravity-ui/icons";
-import { details } from "framer-motion/client";
+
 import Link from "next/link";
 
 

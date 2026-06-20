@@ -18,7 +18,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} min-h-screen flex flex-col  px-4`}>
+      <body
+         suppressHydrationWarning 
+       className={`${poppins.className} min-h-screen flex flex-col  px-4`}>
         <Navbar />
 
         <main className="flex-1">
