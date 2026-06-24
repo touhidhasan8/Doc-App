@@ -61,7 +61,6 @@ const DoctorsCard = ({ doctor }) => {
                     <Link
                         href={`/doctor-details/${doctor._id}`}
                         rel="noopener noreferrer"
-
                     >
                         View Details
 

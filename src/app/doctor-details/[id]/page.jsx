@@ -15,7 +15,7 @@ const DoctorDetails = async ({ params }) => {
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
             <Button>
-                <div className="flex items-center gap-2">
+                <div className="flex  items-center gap-2">
                     <h1 ><ArrowLeftFromLine /></h1>
                     <Link href='/doctors'>  Go Back </Link>
                 </div>

@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,14 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-         suppressHydrationWarning 
-       className={`${poppins.className} min-h-screen flex flex-col  px-4`}>
+        suppressHydrationWarning
+        className={`${poppins.className} min-h-screen flex flex-col  px-4`}>
         <Navbar />
 
-        <main className="flex-1">
+        <main className="flex-1 container mx-auto">
           {children}
           <Toaster />
         </main>
+        <Footer></Footer>
       </body>
     </html>
   );

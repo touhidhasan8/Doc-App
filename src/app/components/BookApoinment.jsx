@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const BookAppointment = ({ doctorData }) => {
 
-    const { name, fee, image, specialty, _id, id } = doctorData;
+    const { name, fee, image, specialty, _id, id, hospital } = doctorData;
     const doctorId = _id || id;
 
     const { data: session } = authClient.useSession();
@@ -18,6 +18,18 @@ const BookAppointment = ({ doctorData }) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const booking = Object.fromEntries(formData.entries());
+
+
+        const { date, time } = booking;
+
+        if (!date) {
+            toast.error("Please select date ");
+            return;
+        }
+        else if (!time) {
+            toast.error("please Select Time")
+            return;
+        }
 
         const appointmentDateTime = new Date(
             `${booking.date} ${booking.time}`
@@ -35,13 +47,14 @@ const BookAppointment = ({ doctorData }) => {
             specialty,
             appointmentDateTime,
             time: booking.time,
+            hospital,
         };
         console.log("Booking Data:", bookData);
         const bookingDoctorData = await doctorBooking(bookData)
         if (bookingDoctorData) {
             toast.success("Booking Success")
         }
-        else{
+        else {
             toast.error("Booking Failed")
         }
 
@@ -91,7 +104,7 @@ const BookAppointment = ({ doctorData }) => {
                                     </TextField>
 
                                     <Modal.Footer>
-                                        <Button slot={"close"} type="submit">  Book Appointment </Button>
+                                        <Button type="submit">  Book Appointment </Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>
