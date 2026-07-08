@@ -4,8 +4,6 @@ import DoctorsCard from './DoctorsCard';
 
 const Search = ({ doctors }) => {
  
-
-
     const [search, setSearch] = useState('')
     const filteredDoctors = doctors.filter((doctor) =>
         doctor.name.toLowerCase().includes(search.toLowerCase()) ||

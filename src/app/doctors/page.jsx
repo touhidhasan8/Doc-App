@@ -3,6 +3,7 @@ import { allDoctors } from '../data';
 import Search from '../components/Search';
 import { headers } from "next/headers";
 
+
 const DoctorsPage = async () => {
     const token = await auth.api.getToken({
         headers: await headers(),
@@ -11,7 +12,11 @@ const DoctorsPage = async () => {
 
     return (
         <div>
-            <Search doctors={doctors} />
+            <div>
+                <Search doctors={doctors} />
+
+            </div>
+            
         </div>
     );
 };

@@ -74,3 +74,11 @@ export const deleteAppointment = async (bookId, token) => {
     const text = await res.text();
     return text ? JSON.parse(text) : true;
 };
+
+// Top Rated Doctors Api
+
+export const topRatedDoctors = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/top-doctors`);
+    const result = await res.json()
+    return result
+}
