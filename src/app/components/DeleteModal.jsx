@@ -5,11 +5,15 @@ import { AlertDialog, Button } from "@heroui/react";
 import { deleteAppointment } from "../data";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
+import { authClient } from "../lib/auth-client";
 
 const DeleteModal = ({ doctor }) => {
     const router = useRouter()
     const handleDelete = async () => {
-        const res = await deleteAppointment(doctor._id);
+        
+        const { data } = await authClient.token()
+
+        const res = await deleteAppointment(doctor._id, data?.token);
         if (res) {
             toast.error("Appointment Deleted")
             router.refresh();
@@ -17,6 +21,8 @@ const DeleteModal = ({ doctor }) => {
         if (!res) {
             toast.error("Appointment Delete Failed")
         }
+
+
     };
     return (
         <AlertDialog>

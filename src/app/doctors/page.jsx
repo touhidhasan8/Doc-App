@@ -1,17 +1,20 @@
-import React from 'react';
+import { auth } from "../lib/auth";
 import { allDoctors } from '../data';
-import DoctorsCard from '../components/DoctorsCard';
+import Search from '../components/Search';
+import { headers } from "next/headers";
 
 const DoctorsPage = async () => {
-    const doctors = await allDoctors()
+    const token = await auth.api.getToken({
+        headers: await headers(),
+    });
+    const doctors = await allDoctors(token)
 
     return (
-        <div className='grid  md:grid-cols-3 grid-cols-1  gap-4 mt-5'>
-            {
-                doctors.map((doctor) => <DoctorsCard key={doctor._id} doctor={doctor} />)
-            }
+        <div>
+            <Search doctors={doctors} />
         </div>
     );
 };
 
 export default DoctorsPage;
+

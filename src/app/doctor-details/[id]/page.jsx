@@ -7,10 +7,29 @@ import BookAppointment from "@/app/components/BookApoinment";
 import Link from "next/link";
 import { ArrowLeftFromLine } from "@gravity-ui/icons";
 import { Button } from "@heroui/react";
+import { auth } from "@/app/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
 
 const DoctorDetails = async ({ params }) => {
     const { id } = await params;
-    const doctorData = await doctorDetails(id);
+
+    let token;
+    try {
+        const result = await auth.api.getToken({
+            headers: await headers(),
+        });
+        token = result?.token;
+    } catch (err) {
+        token = null;
+    }
+
+    if (!token) {
+        redirect("/login");
+    }
+
+    const doctorData = await doctorDetails(id, token);
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
@@ -90,7 +109,6 @@ const DoctorDetails = async ({ params }) => {
                             </div>
 
 
-
                             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                                 <p className="font-semibold">
                                     Consultation Fee
@@ -109,7 +127,6 @@ const DoctorDetails = async ({ params }) => {
 
                                     <BookAppointment doctorData={doctorData} />
                                 </div>
-
                             </div>
                         </div>
                     </div>

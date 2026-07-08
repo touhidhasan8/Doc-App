@@ -14,8 +14,7 @@ export async function proxy(request) {
 
 }
 
-
 export const config = {
-    matcher: ['/appointments',],
+    matcher: ['/appointments', '/doctors-details/:path*'],
+    runtime: 'nodejs',
 }
-

@@ -19,8 +19,6 @@ const AddDoctors = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
-        console.log(user);
-
         const result = await addDoctor(user);
         if (result) {
             toast.success("Destination added successfully!");

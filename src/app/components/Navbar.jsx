@@ -25,7 +25,7 @@ const Navbar = () => {
         { name: "All Doctors", path: "/doctors" },
         { name: "Appointments", path: "/appointments" },
         { name: "Contact", path: "/contact" },
-        { name: "Add-Doctors", path: "/add-doctors" },
+        // { name: "Add-Doctors", path: "/add-doctors" },
     ];
 
     const handleLogout = async () => {

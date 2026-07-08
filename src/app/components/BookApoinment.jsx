@@ -35,6 +35,9 @@ const BookAppointment = ({ doctorData }) => {
             `${booking.date} ${booking.time}`
         );
 
+        const { data } = await authClient.token()
+
+
         const bookData = {
             name: user?.name,
             email: user?.email,
@@ -49,12 +52,14 @@ const BookAppointment = ({ doctorData }) => {
             time: booking.time,
             hospital,
         };
-        console.log("Booking Data:", bookData);
-        const bookingDoctorData = await doctorBooking(bookData)
-        if (bookingDoctorData) {
-            toast.success("Booking Success")
-        }
-        else {
+
+        const bookingDoctorData = await doctorBooking(bookData, data?.token)
+        try {
+            if (bookingDoctorData) {
+                toast.success("Booking Success")
+            }
+           
+        } catch (error) {
             toast.error("Booking Failed")
         }
 
