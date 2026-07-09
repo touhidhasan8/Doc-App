@@ -54,10 +54,10 @@ const reviews = [
 
 const ClientReviews = () => {
     return (
-        <section className="max-w-7xl mx-auto px-4 py-16">
+        <section className="max-w-7xl mx-auto px-4 md:mt-0 mt-5">
             {/* Heading */}
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold">
+                <h2 className="text-3xl md:text-4xl font-semibold">
                     What Our Clients Say
                 </h2>
                 <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
