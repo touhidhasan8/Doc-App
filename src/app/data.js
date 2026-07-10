@@ -82,3 +82,19 @@ export const topRatedDoctors = async () => {
     const result = await res.json()
     return result
 }
+
+// Update User Data Api
+export const updateUser = async (id) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/profile/${user.id}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+
+        });
+    const result = await res.json()
+    return result
+}
+
