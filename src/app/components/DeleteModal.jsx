@@ -15,7 +15,7 @@ const DeleteModal = ({ doctor }) => {
 
         const res = await deleteAppointment(doctor._id, data?.token);
         if (res) {
-            toast.error("Appointment Deleted")
+            toast.success("Appointment Deleted")
             router.refresh();
         }
         if (!res) {
@@ -55,7 +55,7 @@ const DeleteModal = ({ doctor }) => {
                                 variant="danger"
                                 onClick={handleDelete}
                             >
-                                Appointment Delete
+                                Cancel Appointment 
                             </Button>
                         </AlertDialog.Footer>
                     </AlertDialog.Dialog>

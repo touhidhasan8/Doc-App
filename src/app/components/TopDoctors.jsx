@@ -4,12 +4,14 @@ import { topRatedDoctors } from "../data";
 import TopDoctorsCard from "./TopDoctorsCard";
 
 const TopDoctors = async () => {
-    const topRatedDoctorsList = await topRatedDoctors();
+    // const topRatedDoctorsList = await topRatedDoctors();
+    const res = await fetch("http://localhost:5000/top-doctors");
+    const topRatedDoctorsList = await res.json()
 
     return (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:mt-0 mt-5 md:py-14">
 
-        
+
             <div className="mb-8 md:mb-12 text-center">
                 <h1 className="flex items-center justify-center gap-2 text-2xl sm:text-3xl lg:text-4xl font-bold">
                     <Star className="text-3xl md:text-4xl font-semibold text-yellow-500" />
@@ -22,7 +24,7 @@ const TopDoctors = async () => {
                 </p>
             </div>
 
-        
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
                 {topRatedDoctorsList.map((topDoctor) => (
                     <TopDoctorsCard

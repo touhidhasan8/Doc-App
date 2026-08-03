@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import DeleteModal from "./DeleteModal";
+import { AppointmentEdit } from "./AppointmentEdit";
 
 
 const AppointmentsPage = ({ doctor }) => {
@@ -66,8 +67,10 @@ const AppointmentsPage = ({ doctor }) => {
 
                 {/* Actions */}
                 <div className="flex justify-end gap-5 mt-4">
+                    <AppointmentEdit/>
                     <DeleteModal doctor={doctor} />
                 </div>
+
             </div>
         </div>
     );

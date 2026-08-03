@@ -78,14 +78,17 @@ export const deleteAppointment = async (bookId, token) => {
 // Top Rated Doctors Api
 
 export const topRatedDoctors = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/top-doctors`);
-    const result = await res.json()
+    const topDoctors = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/top-doctors`);
+    const result = await topDoctors.json();
+    // console.log(result);
     return result
 }
 
+
+
 // Update User Data Api
-export const updateUser = async (id) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/profile/${user.id}`,
+export const updateUser = async (id, data) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/profile/${id}`,
         {
             method: "PATCH",
             headers: {

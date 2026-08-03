@@ -40,8 +40,7 @@ export default function HeroSlider() {
                         alt={`Banner ${current + 1}`}
                         fill
                         className="object-cover"
-                        priority
-                        quality={90}
+                       
                     />
                 </motion.div>
             </AnimatePresence>

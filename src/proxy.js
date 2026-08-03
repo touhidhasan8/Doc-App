@@ -1,21 +1,17 @@
+// 
 import { NextResponse } from 'next/server'
-import { auth } from './app/lib/auth'
-import { headers } from 'next/headers'
-
+import { getSessionCookie } from 'better-auth/cookies'
 
 export async function proxy(request) {
+    const sessionCookie = getSessionCookie(request)
 
-    const session = await auth.api.getSession({
-        headers: await headers()
-    })
-    if (!session) {
+    if (!sessionCookie) {
         return NextResponse.redirect(new URL('/login', request.url))
     }
 
+    return NextResponse.next()
 }
-
 
 export const config = {
-    matcher: ['/appointments',],
+    matcher: ['/appointments', '/doctors-details/:path*'],
 }
-
