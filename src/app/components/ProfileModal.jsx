@@ -12,7 +12,7 @@ import {
 import toast from "react-hot-toast";
 
 const ProfileModal = ({ user }) => {
-     const router = useRouter();
+    const router = useRouter();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +37,7 @@ const ProfileModal = ({ user }) => {
             console.log(result);
 
             if (res.ok) {
-               toast.success("Profile Was Updated Successfully")
+                toast.success("Profile Was Updated Successfully")
                 router.refresh();
             } else {
                 toast.error(result.message || "Something went wrong")
@@ -51,7 +51,7 @@ const ProfileModal = ({ user }) => {
 
     console.log(user)
     console.log(user.id)
-    
+
 
     return (
         <Modal>

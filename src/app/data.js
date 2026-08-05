@@ -56,6 +56,7 @@ export const doctorBookingShow = async (userId, token) => {
             }
         }
     );
+  
 
     const doctor = await res.json()
     return doctor;

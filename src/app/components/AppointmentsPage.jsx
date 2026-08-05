@@ -67,7 +67,7 @@ const AppointmentsPage = ({ doctor }) => {
 
                 {/* Actions */}
                 <div className="flex justify-end gap-5 mt-4">
-                    <AppointmentEdit/>
+                    <AppointmentEdit doctor= {doctor}/>
                     <DeleteModal doctor={doctor} />
                 </div>
 
