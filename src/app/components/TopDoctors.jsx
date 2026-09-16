@@ -5,7 +5,7 @@ import TopDoctorsCard from "./TopDoctorsCard";
 
 const TopDoctors = async () => {
     // const topRatedDoctorsList = await topRatedDoctors();
-    const res = await fetch("http://localhost:5000/top-doctors");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URI}/top-doctors`);
     const topRatedDoctorsList = await res.json()
 
     return (
