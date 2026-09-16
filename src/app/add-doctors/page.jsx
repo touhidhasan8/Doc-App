@@ -11,7 +11,7 @@ import {
     TextField,
 } from "@heroui/react";
 import React from "react";
-import { addDoctor } from "../data";
+// import { addDoctor } from "../data";
 import toast from "react-hot-toast";
 
 const AddDoctors = () => {
@@ -19,7 +19,7 @@ const AddDoctors = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
-        const result = await addDoctor(user);
+        // const result = await addDoctor(user);
         if (result) {
             toast.success("Destination added successfully!");
         } else {
